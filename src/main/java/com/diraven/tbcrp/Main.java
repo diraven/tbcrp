@@ -13,7 +13,7 @@ public class Main {
     public static final String NAME = "The Burning Claw RP";
     public static final String VERSION = "0.0.1";
 
-    private static Logger logger;
+    public static Logger logger;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event) {
