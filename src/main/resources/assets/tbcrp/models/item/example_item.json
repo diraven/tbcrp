@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "tbcrp:item/example_ingot"
+    "layer0": "tbcrp:item/example_item"
   }
 }
