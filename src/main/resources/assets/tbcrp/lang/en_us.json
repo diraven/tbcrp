@@ -1,4 +1,5 @@
 {
   "item.tbcrp.example_item": "Example Item",
-  "itemGroup.tbcrp": "TBC RP"
+  "itemGroup.tbcrp": "TBC RP",
+  "block.tbcrp.example_block": "Example Block"
 }
