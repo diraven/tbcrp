@@ -51,20 +51,3 @@ https://www.youtube.com/watch?v=8VEdtQLuLO0&feature=youtu.be
 
 For more details update more often refer to the Forge Forums:
 http://www.minecraftforge.net/forum/index.php/topic,14048.0.html
-
-
-# Docs
-
-* ForgeEssentials: https://github.com/ForgeEssentials/ForgeEssentials/wiki
-* WorldEdit: https://worldedit.enginehub.org/en/latest/
-* CraftTweaker/MineTweaker: https://docs.blamejared.com/1.12/en/Getting_Started/
-* Forge: https://mcforge.readthedocs.io/en/1.14.x/
-* BuildingGadgets: https://github.com/Direwolf20-MC/BuildingGadgets/wiki
-
-# Notes
-* /kill @e[type=realdrops:item_loot,r=100]
-
-# Server Connection Parameters
-
-* tbc.diraven.com:25566
-* forge-1.12.2-14.23.5.2854
