@@ -1,6 +1,5 @@
 {
-  "parent": "block/cube_all",
-  "textures": {
-    "all": "MODID:block/TEXTURE_NAME"
-  }
+  "loader": "forge:obj",
+  "model": "tbcrp:models/block/example_block.obj",
+  "flip-v": true
 }

@@ -7,7 +7,7 @@
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "tbcrp:example_block"
+          "name": "tbcrp:example_blockitem"
         }
       ],
       "conditions": [

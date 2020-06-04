@@ -1,7 +1,7 @@
 {
   "variants": {
     "": [
-      { "model": "MODID:block/MODELNAME" }
+      { "model": "tbcrp:block/example_block" }
     ]
   }
 }
