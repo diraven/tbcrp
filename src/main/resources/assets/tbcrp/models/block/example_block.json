@@ -1,5 +1,0 @@
-{
-  "loader": "forge:obj",
-  "model": "tbcrp:models/block/example_block.obj",
-  "flip-v": true
-}

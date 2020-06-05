@@ -2,12 +2,12 @@
   "type": "minecraft:block",
   "pools": [
     {
-      "name": "example_block",
+      "name": "washing_machine",
       "rolls": 1,
       "entries": [
         {
           "type": "minecraft:item",
-          "name": "tbcrp:example_blockitem"
+          "name": "tbcrp:washing_machine"
         }
       ],
       "conditions": [

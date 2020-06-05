@@ -1,0 +1,6 @@
+{
+  "loader": "forge:obj",
+  "model": "tbcrp:models/block/washing_machine.obj",
+  "texture": "tbcrp:textures/block/washing_machine.obj",
+  "flip-v": true
+}
