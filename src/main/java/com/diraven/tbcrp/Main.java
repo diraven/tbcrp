@@ -1,7 +1,7 @@
 package com.diraven.tbcrp;
 
-import com.diraven.tbcrp.eternalore.EternalOreBlocks;
-import com.diraven.tbcrp.eternalore.EternalOreItems;
+import com.diraven.tbcrp.eternalore.EtoBlocks;
+import com.diraven.tbcrp.eternalore.EtoItems;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
@@ -16,8 +16,8 @@ public class Main {
         ModItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
         ModBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
 
-        EternalOreItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
-        EternalOreBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EtoItems.ITEMS.register(FMLJavaModLoadingContext.get().getModEventBus());
+        EtoBlocks.BLOCKS.register(FMLJavaModLoadingContext.get().getModEventBus());
     }
 
 }

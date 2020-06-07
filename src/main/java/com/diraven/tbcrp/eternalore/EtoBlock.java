@@ -5,8 +5,8 @@ import net.minecraft.block.BlockState;
 import net.minecraft.util.math.BlockPos;
 import net.minecraft.world.IWorld;
 
-public class EternalOreBlock extends Block {
-    public EternalOreBlock(Properties properties) {
+public class EtoBlock extends Block {
+    public EtoBlock(Properties properties) {
         super(properties);
     }
 

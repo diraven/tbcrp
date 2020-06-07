@@ -1,6 +1,5 @@
 package com.diraven.tbcrp;
 
-import com.diraven.tbcrp.eternalore.EternalOreBlock;
 import com.diraven.tbcrp.block.type.HorizontalFacingBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;

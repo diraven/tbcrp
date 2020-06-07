@@ -6,10 +6,10 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 @Mod.EventBusSubscriber(modid = Main.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class EternalOreEvents {
+public class EtoEvents {
     @SubscribeEvent
     public static void onBreakSpeed(PlayerEvent.BreakSpeed event) {
-        if (event.getState().getBlock() instanceof EternalOreBlock) {
+        if (event.getState().getBlock() instanceof EtoBlock) {
             event.setNewSpeed(event.getOriginalSpeed() * 0.1f);
         }
     }
