@@ -9,6 +9,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 public class ModItems {
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, Main.MOD_ID);
 
-    public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item", () -> new Item(new Item.Properties()));
     public static final RegistryObject<Item> WASHING_MACHINE = ITEMS.register("washing_machine", () -> new BlockItem(ModBlocks.WASHING_MACHINE.get(), new Item.Properties()));
+
+    public static final RegistryObject<Item> EXAMPLE_ITEM = ITEMS.register("example_item", () -> new Item(new Item.Properties()));
 }
