@@ -11,10 +11,12 @@ public class HorizontalFacingBlock extends net.minecraft.block.HorizontalBlock {
         super(properties);
     }
 
+    @Override
     public BlockState getStateForPlacement(BlockItemUseContext context) {
         return this.getDefaultState().with(HORIZONTAL_FACING, context.getPlacementHorizontalFacing());
     }
 
+    @Override
     protected void fillStateContainer(StateContainer.Builder<Block, BlockState> builder) {
         builder.add(HorizontalBlock.HORIZONTAL_FACING);
     }

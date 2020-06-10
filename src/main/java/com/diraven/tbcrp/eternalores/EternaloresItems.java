@@ -1,4 +1,4 @@
-package com.diraven.tbcrp.eternalore;
+package com.diraven.tbcrp.eternalores;
 
 import com.diraven.tbcrp.Main;
 import net.minecraft.item.BlockItem;
@@ -7,12 +7,12 @@ import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 
-public class EtoItems {
+public class EternaloresItems {
     public static final DeferredRegister<Item> ITEMS = new DeferredRegister<>(ForgeRegistries.ITEMS, Main.MOD_ID);
 
     public static final RegistryObject<Item> ETERNAL_COBBLESTONE = ITEMS.register(
             "eternal_cobblestone", () -> new BlockItem(
-                    EtoBlocks.ETERNAL_COBBLESTONE.get(),
+                    EternaloresBlocks.ETERNAL_COBBLESTONE.get(),
                     new Item.Properties()
             )
     );
