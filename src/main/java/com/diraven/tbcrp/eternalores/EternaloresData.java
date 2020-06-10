@@ -76,10 +76,6 @@ public class EternaloresData extends WorldSavedData {
         markDirty();
     }
 
-    private void markBlockRespawned(BlockPos pos) {
-        respawnSchedule.remove(pos);
-    }
-
     public Map<BlockPos, EternaloresBlock> getBlocksToRespawn(Dimension dimension, Pos pos, Block block) {
         Map<BlockPos, EternaloresBlock> blocksToRespawn = new HashMap<>();
         respawnSchedule.entrySet().removeIf(e -> {
