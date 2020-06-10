@@ -11,7 +11,7 @@ import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.common.registry.GameRegistry;
 
-import java.util.Date;
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -23,11 +23,11 @@ public class EternaloresData extends WorldSavedData {
 
     private static class RespawnScheduleRecord {
         EternaloresBlock what;
-        Date when;
+        Instant when;
 
-        public RespawnScheduleRecord(EternaloresBlock block, Date respawnDatetime) {
-            this.what = block;
-            this.when = respawnDatetime;
+        public RespawnScheduleRecord(EternaloresBlock what, Instant when) {
+            this.what = what;
+            this.when = when;
         }
     }
 
@@ -42,7 +42,7 @@ public class EternaloresData extends WorldSavedData {
             compoundNBT.putInt("y", blockPos.getY());
             compoundNBT.putInt("z", blockPos.getZ());
             compoundNBT.putString("what", respawnScheduleRecord.what.getRegistryName().toString());
-            compoundNBT.putLong("when", respawnScheduleRecord.when.getTime());
+            compoundNBT.putLong("when", respawnScheduleRecord.when.getEpochSecond());
             respawnScheduleNBT.add(compoundNBT);
         });
         nbt.put("respawnSchedule", respawnScheduleNBT);
@@ -65,30 +65,27 @@ public class EternaloresData extends WorldSavedData {
                             (EternaloresBlock) GameRegistry.findRegistry(Block.class).getValue(
                                     new ResourceLocation(compoundNBT.getString("what"))
                             ),
-                            new Date(compoundNBT.getLong("when"))
+                            Instant.ofEpochMilli(compoundNBT.getLong("when"))
                     )
             );
         });
     }
 
-    public void scheduleBlockRespawn(BlockPos where, EternaloresBlock what, Date when) {
-        respawnSchedule.put(where, new RespawnScheduleRecord(what, when));
+    public void scheduleBlockRespawn(BlockPos where, EternaloresBlock what) {
+        respawnSchedule.put(where, new RespawnScheduleRecord(what, Instant.now().plusSeconds(what.cooldownSeconds)));
         markDirty();
     }
 
     public Map<BlockPos, EternaloresBlock> getBlocksToRespawn(Dimension dimension, Pos pos, Block block) {
         Map<BlockPos, EternaloresBlock> blocksToRespawn = new HashMap<>();
         respawnSchedule.entrySet().removeIf(e -> {
-            if (e.getValue().when.after(new Date())) {
+            if (e.getValue().when.compareTo(Instant.now()) > 0) {
                 blocksToRespawn.put(e.getKey(), e.getValue().what);
                 return true;
             }
             return false;
         });
-        return blocksToRespawn;
-    }
-
-    public void delBlocks() {
         markDirty();
+        return blocksToRespawn;
     }
 }
