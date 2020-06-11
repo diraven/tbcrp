@@ -1,12 +1,11 @@
-package com.diraven.tbcrp.eternalores;
+package com.diraven.tbcrp.eore;
 
-import javafx.geometry.Pos;
+import com.diraven.tbcrp.Main;
 import net.minecraft.block.Block;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.nbt.ListNBT;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.math.BlockPos;
-import net.minecraft.world.dimension.Dimension;
 import net.minecraft.world.storage.WorldSavedData;
 import net.minecraftforge.common.util.Constants;
 import net.minecraftforge.fml.common.registry.GameRegistry;
@@ -16,22 +15,24 @@ import java.util.HashMap;
 import java.util.Map;
 
 
-public class EternaloresData extends WorldSavedData {
-    public EternaloresData(String name) {
-        super("eternalores");
+public class EOreData extends WorldSavedData {
+    public static final String ID = Main.MOD_ID + "_eternalores";
+
+    public EOreData() {
+        super(ID);
     }
 
     private static class RespawnScheduleRecord {
-        EternaloresBlock what;
+        EOreBlock what;
         Instant when;
 
-        public RespawnScheduleRecord(EternaloresBlock what, Instant when) {
+        public RespawnScheduleRecord(EOreBlock what, Instant when) {
             this.what = what;
             this.when = when;
         }
     }
 
-    private Map<BlockPos, RespawnScheduleRecord> respawnSchedule;
+    private final Map<BlockPos, RespawnScheduleRecord> respawnSchedule = new HashMap<>();
 
     @Override
     public CompoundNBT write(CompoundNBT nbt) {
@@ -62,7 +63,7 @@ public class EternaloresData extends WorldSavedData {
                             compoundNBT.getInt("z")
                     ),
                     new RespawnScheduleRecord(
-                            (EternaloresBlock) GameRegistry.findRegistry(Block.class).getValue(
+                            (EOreBlock) GameRegistry.findRegistry(Block.class).getValue(
                                     new ResourceLocation(compoundNBT.getString("what"))
                             ),
                             Instant.ofEpochMilli(compoundNBT.getLong("when"))
@@ -71,15 +72,15 @@ public class EternaloresData extends WorldSavedData {
         });
     }
 
-    public void scheduleBlockRespawn(BlockPos where, EternaloresBlock what) {
+    public void scheduleBlockRespawn(BlockPos where, EOreBlock what) {
         respawnSchedule.put(where, new RespawnScheduleRecord(what, Instant.now().plusSeconds(what.cooldownSeconds)));
         markDirty();
     }
 
-    public Map<BlockPos, EternaloresBlock> getBlocksToRespawn(Dimension dimension, Pos pos, Block block) {
-        Map<BlockPos, EternaloresBlock> blocksToRespawn = new HashMap<>();
+    public Map<BlockPos, EOreBlock> getBlocksToRespawn() {
+        Map<BlockPos, EOreBlock> blocksToRespawn = new HashMap<>();
         respawnSchedule.entrySet().removeIf(e -> {
-            if (e.getValue().when.compareTo(Instant.now()) > 0) {
+            if (e.getValue().when.compareTo(Instant.now()) < 0) {
                 blocksToRespawn.put(e.getKey(), e.getValue().what);
                 return true;
             }
